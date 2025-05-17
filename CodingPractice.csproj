@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="RecordRecorder.cs" />
+    <Compile Remove="ObserverPattern.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Problems\GeeksForGeeks\" />
+    <None Remove="Problems\Algorithms\" />
+    <None Remove="Resource\" />
+    <None Remove="Problems\Interview\" />
+    <None Remove="Problems\Interview\Broadway Tech\" />
+    <None Remove="Problems\Algorithms\SlidingWindow\" />
+    <None Remove="Problems\UdemyCodingBootcamp\" />
+    <None Remove="Problems\Interview\RockStar\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Problems\GeeksForGeeks\" />
+    <Folder Include="Resource\" />
+    <Folder Include="Problems\Interview\" />
+    <Folder Include="Problems\Interview\Broadway Tech\" />
+    <Folder Include="Problems\Algorithms\SlidingWindow\" />
+    <Folder Include="Problems\UdemyCodingBootcamp\" />
+    <Folder Include="Problems\Interview\RockStar\" />
+  </ItemGroup>
+</Project>
