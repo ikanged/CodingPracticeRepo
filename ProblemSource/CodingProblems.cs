@@ -20,6 +20,7 @@ namespace CodingProblem
             codingProblems.Add(1, new BSTCheck());
             codingProblems.Add(2, new AlgorithmSwap());
             codingProblems.Add(3, new StringOrder());
+            codingProblems.Add(4, new ValidAnagram());
         }
         
         public override bool BeginProblem(int iUserInput)

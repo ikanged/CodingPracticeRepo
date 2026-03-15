@@ -74,7 +74,7 @@ namespace CodingPractice.Problems.Algorithms.SlidingWindow
                 length++;
             }
 
-			return maxLength;
+			return Math.Max(length, maxLength);
 		}
     }
 }

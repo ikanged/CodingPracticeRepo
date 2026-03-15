@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace CodingPractice.Problems.Interview
+namespace CodingPractice.Problems.Interview.BroadwayTech
 {
 	public class TaskScheduler : AbsProblem, IProblem
 	{

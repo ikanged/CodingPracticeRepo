@@ -76,15 +76,7 @@ namespace CodingPractice.Problems.LeetCode
 
                         if (compliment == nums[j])
                         {
-                            if(memo.ContainsValue(compliment))
-                            {
-                                //Don't account for itself!
-                                if(memo.FirstOrDefault(value => value.Value == compliment).Key == i)
-                                {
-                                    continue;
-                                }
-                                return new int[] { memo.FirstOrDefault(value => value.Value == nums[i]).Key, j };
-                            }
+                            return new int[] { i, j };
                         }
                     }
                 }
