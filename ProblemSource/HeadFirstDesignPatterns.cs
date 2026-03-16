@@ -1,3 +1,4 @@
+using System.Linq;
 ﻿using System;
 using System.Collections.Generic;
 using CodingPractice.Helpers;
@@ -6,7 +7,7 @@ using CodingPractice;
 
 namespace DesignPatterns
 {
-    class HeadFirstDesignPatterns : AbsDomain
+    public class HeadFirstDesignPatterns : AbsDomain
     {
         private Dictionary<int, AbsProblem> sections = new Dictionary<int, AbsProblem>();
 
@@ -48,10 +49,19 @@ namespace DesignPatterns
 
         public override void InitializeProblems()
         {
-            foreach (var section in Enum.GetValues(typeof(HF_DesignPatterns)))
+            if (sections.Count == 0)
             {
-                sections.Add(Convert.ToInt32(section), getSection(section));
+                foreach (var section in Enum.GetValues(typeof(HF_DesignPatterns)))
+                {
+                    sections.Add(Convert.ToInt32(section), getSection(section));
+                }
             }
+        }
+
+        public override IReadOnlyDictionary<int, string> GetProblems()
+        {
+            InitializeProblems();
+            return sections.ToDictionary(kvp => kvp.Key, kvp => kvp.Value?.Name ?? "Unknown");
         }
 
         private AbsProblem getSection(object section)

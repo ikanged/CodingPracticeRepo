@@ -6,7 +6,5 @@ namespace HackerRank
         public ObserverPattern() : base("Observer Pattern")
         {
         }
-
-
     }
 }

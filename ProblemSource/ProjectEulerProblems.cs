@@ -1,3 +1,4 @@
+using System.Linq;
 ﻿using System.Collections.Generic;
 using System;
 using CodingPractice;
@@ -52,5 +53,10 @@ namespace ProjectEuler
             }
         }
 
+        public override IReadOnlyDictionary<int, string> GetProblems()
+        {
+            InitializeProblems();
+            return problems.ToDictionary(kvp => kvp.Key, kvp => kvp.Value?.Name ?? "Unknown");
+        }
     }
 }

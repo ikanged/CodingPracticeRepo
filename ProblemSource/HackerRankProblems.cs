@@ -1,3 +1,4 @@
+using System.Linq;
 ﻿using System.Collections.Generic;
 using System;
 using CodingPractice;
@@ -83,6 +84,12 @@ namespace HackerRank
             {
                 Console.WriteLine($"{i}. {problems[i]?.Name}");
             }
+        }
+
+        public override IReadOnlyDictionary<int, string> GetProblems()
+        {
+            InitializeProblems();
+            return problems.ToDictionary(kvp => kvp.Key, kvp => kvp.Value.Name);
         }
     }
 }

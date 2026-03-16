@@ -1,3 +1,4 @@
+using System.Linq;
 ﻿using System;
 using System.Collections.Generic;
 using CodingPractice;
@@ -7,7 +8,7 @@ using CodingPractice.Enums;
 
 namespace LeetCode
 {
-    class LeetCodeProblems : AbsDomain
+    public class LeetCodeProblems : AbsDomain
     {
         private Dictionary<int, AbsProblem> lcProblems = new Dictionary<int, AbsProblem>();
         private List<AbsProblem> problems = new List<AbsProblem>(); 
@@ -109,6 +110,12 @@ namespace LeetCode
             {
                 Console.WriteLine($"{i}. {lcProblems[i]}");
             }
+        }
+
+        public override IReadOnlyDictionary<int, string> GetProblems()
+        {
+            InitializeProblems();
+            return lcProblems.ToDictionary(kvp => kvp.Key, kvp => kvp.Value.Name);
         }
     }
 }

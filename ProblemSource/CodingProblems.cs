@@ -1,3 +1,4 @@
+using System.Linq;
 ﻿using System;
 using System.Collections.Generic;
 using CodingPractice;
@@ -7,7 +8,7 @@ using CodingPractice.Enums;
 
 namespace CodingProblem
 {
-    class CodingProblems : AbsDomain
+    public class CodingProblems : AbsDomain
     {
         private Dictionary<int, AbsProblem> codingProblems = new Dictionary<int, AbsProblem>();
 
@@ -17,10 +18,13 @@ namespace CodingProblem
 
         public override void InitializeProblems()
         {
-            codingProblems.Add(1, new BSTCheck());
-            codingProblems.Add(2, new AlgorithmSwap());
-            codingProblems.Add(3, new StringOrder());
-            codingProblems.Add(4, new ValidAnagram());
+            if (codingProblems.Count == 0)
+            {
+                codingProblems.Add(1, new BSTCheck());
+                codingProblems.Add(2, new AlgorithmSwap());
+                codingProblems.Add(3, new StringOrder());
+                codingProblems.Add(4, new ValidAnagram());
+            }
         }
         
         public override bool BeginProblem(int iUserInput)
@@ -52,6 +56,12 @@ namespace CodingProblem
             {
                 Console.WriteLine($"{i}. {codingProblems[i]}");
             }
+        }
+
+        public override IReadOnlyDictionary<int, string> GetProblems()
+        {
+            InitializeProblems();
+            return codingProblems.ToDictionary(kvp => kvp.Key, kvp => kvp.Value.Name);
         }
     }
 }

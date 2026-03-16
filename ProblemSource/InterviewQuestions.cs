@@ -1,3 +1,4 @@
+using System.Linq;
 ﻿using System;
 using CodingPractice.Helpers;
 using System.Collections.Generic;
@@ -54,6 +55,12 @@ namespace Interview
                 interviewProblems.Add(1, new PairsAndTriple());
                 interviewProblems.Add(2, new RockStarDemo());
             }
+        }
+
+        public override IReadOnlyDictionary<int, string> GetProblems()
+        {
+            InitializeProblems();
+            return interviewProblems.ToDictionary(kvp => kvp.Key, kvp => kvp.Value.Name);
         }
     }
 }

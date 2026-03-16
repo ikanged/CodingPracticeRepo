@@ -1,3 +1,4 @@
+using System.Linq;
 ﻿using System;
 using CodingPractice;
 using System.Collections.Generic;
@@ -49,8 +50,17 @@ namespace GeeksForGeeks
 
         public override void InitializeProblems()
         {
-            gfgProblems.Add(1, new HeightOfBinaryTree());
-            gfgProblems.Add(2, new MinimumNumberOfJumps());
+            if (gfgProblems.Count == 0)
+            {
+                gfgProblems.Add(1, new HeightOfBinaryTree());
+                gfgProblems.Add(2, new MinimumNumberOfJumps());
+            }
+        }
+
+        public override IReadOnlyDictionary<int, string> GetProblems()
+        {
+            InitializeProblems();
+            return gfgProblems.ToDictionary(kvp => kvp.Key, kvp => kvp.Value.Name);
         }
     }
 }

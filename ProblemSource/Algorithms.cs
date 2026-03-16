@@ -1,3 +1,4 @@
+using System.Linq;
 ﻿using System;
 using System.Collections.Generic;
 using CodingPractice;
@@ -49,11 +50,20 @@ namespace Algorithms
 
         public override void InitializeProblems()
         {
-            algoritms.Add(1, new MaxSumFixedWindow());
-            algoritms.Add(2, new SmallestWindowWithSum());
-            algoritms.Add(3, new LongSubstringWithKDistCharacter());
-            algoritms.Add(4,new BinarySearch());
-            algoritms.Add(5, new MergeSort());
+            if (algoritms.Count == 0)
+            {
+                algoritms.Add(1, new MaxSumFixedWindow());
+                algoritms.Add(2, new SmallestWindowWithSum());
+                algoritms.Add(3, new LongSubstringWithKDistCharacter());
+                algoritms.Add(4, new BinarySearch());
+                algoritms.Add(5, new MergeSort());
+            }
+        }
+
+        public override IReadOnlyDictionary<int, string> GetProblems()
+        {
+            InitializeProblems();
+            return algoritms.ToDictionary(kvp => kvp.Key, kvp => kvp.Value.Name);
         }
     }
 }

@@ -10,6 +10,7 @@ namespace CodingPractice.Helpers
 
 		public abstract void InitializeProblems();
 		public abstract void DisplayProblems();
+		public abstract IReadOnlyDictionary<int, string> GetProblems();
 
 		public void DisplayMessage(string msg)
 		{

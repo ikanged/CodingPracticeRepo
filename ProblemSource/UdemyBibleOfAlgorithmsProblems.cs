@@ -1,3 +1,4 @@
+using System.Linq;
 ﻿using System.Collections.Generic;
 using System;
 using CodingPractice;
@@ -8,7 +9,7 @@ using CodingPractice.Enums;
 
 namespace UdemyAlgorithms
 {
-	class UdemyBibleOfAlgorithmsProblems : AbsDomain
+	public class UdemyBibleOfAlgorithmsProblems : AbsDomain
 	{
 		//Collection of all Project Euler Problems
 		private Dictionary<int, AbsProblem> problems = new Dictionary<int, AbsProblem>();
@@ -52,6 +53,12 @@ namespace UdemyAlgorithms
 				problems.Add(2, new PrimeFactorization());
 				problems.Add(3, new PrimeSieveOfEratosthenes());
 			}
+		}
+
+		public override IReadOnlyDictionary<int, string> GetProblems()
+		{
+			InitializeProblems();
+			return problems.ToDictionary(kvp => kvp.Key, kvp => kvp.Value?.Name ?? "Unknown");
 		}
 	}
 }

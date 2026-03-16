@@ -1,3 +1,4 @@
+using System.Linq;
 ﻿using System.Collections.Generic;
 using CodingPractice;
 using CodingPractice.Helpers;
@@ -16,9 +17,12 @@ namespace DataStructure
 
         public override void InitializeProblems()
         {
-            dataStructures.Add(1, new LinkedListDataStructure());
-            dataStructures.Add(2, new DynamicArray());
-            dataStructures.Add(3, new Graph());
+            if (dataStructures.Count == 0)
+            {
+                dataStructures.Add(1, new LinkedListDataStructure());
+                dataStructures.Add(2, new DynamicArray());
+                dataStructures.Add(3, new Graph());
+            }
         }
         public override bool BeginProblem(int input)
         {
@@ -49,6 +53,12 @@ namespace DataStructure
             {
                 DisplayMessage($"{i}. {dataStructures[i]}");
             }
+        }
+
+        public override IReadOnlyDictionary<int, string> GetProblems()
+        {
+            InitializeProblems();
+            return dataStructures.ToDictionary(kvp => kvp.Key, kvp => kvp.Value.Name);
         }
     }
 }
